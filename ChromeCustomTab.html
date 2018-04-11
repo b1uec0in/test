@@ -32,10 +32,11 @@
    }
     
     function callCustomSchemeUri(url) {
-        var frame = document.createElement("iframe");
-        frame.src = url;
-        frame.style.display = "none";
-        document.body.appendChild(frame);
+        window.location.href = url
+//         var frame = document.createElement("iframe");
+//         frame.src = url;
+//         frame.style.display = "none";
+//         document.body.appendChild(frame);
     }
    
   </script>
