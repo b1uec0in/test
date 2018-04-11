@@ -3,18 +3,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script language="javascript">
     var params = new URL(window.location.href).searchParams;
-    function redirect() {
-      var redirectUrl = params.get("redirectUrl");
-      if (redirectUrl) {
-          window.open(redirectUrl);
+    function tidChannelInfoSSOLogin() {
+      var tidChannelInfoSSOLoginPath = params.get("tidChannelInfoSSOLoginPath");
+      if (tidChannelInfoSSOLoginPath) {
+          var loginPath = params.get("loginPath");
+          var callbackWebUrl = setQuery(window.location.href, "callbackType", "tid");
+          var callback = setQuery(loginPath, "url", callbackWebUrl);
+          var url = tidChannelInfoSSOLoginPath;
+          url = setQuery(url, "linkChannelName", "뮤직메이트");
+          url = setQuery(url, "linkChannelID", "FMNX");
+          url = setQuery(url, "linkIsRealName", "false");
+          url = setQuery(url, "callback", callback);
+          window.open(tidChannelInfoSSOLoginPath);
       } else {
         alert("redirectUrl parameter not found.");
       }
     }
     
+     function setQuery(uri, key, value) {
+      var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+      var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+      if (uri.match(re)) {
+        return uri.replace(re, '$1' + key + "=" + value + '$2');
+      }
+      else {
+        return uri + separator + key + "=" + value;
+      }
+     }
+}
+    
   </script>
 </head>
 <body>
-<button onclick="redirect()">redirect test</button>
+<button onclick="tidChannelInfoSSOLogin()">tidChannelInfoSSOLogin</button>
 </body>
 </html>
