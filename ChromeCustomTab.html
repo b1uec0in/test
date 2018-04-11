@@ -5,15 +5,16 @@
     var params = new URL(window.location.href).searchParams;
     function redirect() {
       var redirectUrl = params.get("redirectUrl");
-      alert(redirectUrl);
       if (redirectUrl) {
           window.open(redirectUrl);
+      } else {
+        alert("redirectUrl parameter not found.");
       }
     }
     
   </script>
 </head>
 <body>
-<button onclick="redirect()">close</button>
+<button onclick="redirect()">redirect test</button>
 </body>
 </html>
