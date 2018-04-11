@@ -44,13 +44,14 @@
     function checkResult() {
       var result = params.get("result");
       if (result) {
-        alert(result);
-        var error = getQueryValue(result, "error");
-        var loginToken = getQueryValue(result, "app_link_token");
-        var loginResultPath = params.get("loginResultPath");
-        var callback = setQuery(loginResultPath, "result", error);
-        callback = setQuery(callback, "loginToken", loginToken);
-        callCustomSchemeUri(callback);
+        if (confirm(result)) {
+          var error = getQueryValue(result, "error");
+          var loginToken = getQueryValue(result, "app_link_token");
+          var loginResultPath = params.get("loginResultPath");
+          var callback = setQuery(loginResultPath, "result", error);
+          callback = setQuery(callback, "loginToken", loginToken);
+          callCustomSchemeUri(callback);
+        }
       }
     }
     
