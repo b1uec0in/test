@@ -14,7 +14,7 @@
           url = setQuery(url, "linkChannelID", "FMNX");
           url = setQuery(url, "linkIsRealName", "false");
           url = setQuery(url, "callback", callback);
-          callCustomSchemeUri(tidChannelInfoSSOLoginPath);
+          callCustomSchemeUri(url);
       } else {
         alert("redirectUrl parameter not found.");
       }
