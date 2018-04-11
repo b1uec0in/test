@@ -9,11 +9,13 @@
           var loginPath = params.get("loginPath");
           var callbackWebUrl = setQuery(window.location.href, "callbackType", "tid");
           var callback = setQuery(loginPath, "url", callbackWebUrl);
+          callback = setQuery(callback, "resultParamName", "result");
           var url = tidChannelInfoSSOLoginPath;
           url = setQuery(url, "linkChannelName", "뮤직메이트");
           url = setQuery(url, "linkChannelID", "FMNX");
           url = setQuery(url, "linkIsRealName", "false");
           url = setQuery(url, "callback", callback);
+          url = setQuery(url, "resultParamName", "result");
           callCustomSchemeUri(url);
       } else {
         alert("redirectUrl parameter not found.");
@@ -41,7 +43,7 @@
    
   </script>
 </head>
-<body>
+<body onload="checkResult()">
 <button onclick="tidChannelInfoSSOLogin()">tidChannelInfoSSOLogin</button>
 </body>
 </html>
