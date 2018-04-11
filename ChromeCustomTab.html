@@ -45,7 +45,25 @@
       var result = params.get("result");
       if (result) {
         alert(result);
+        var error = getQueryValue(result, "error");
+        var loginToken = getQueryValue(result, "app_link_token");
+        var loginResultPath = params.get("loginResultPath");
+        var callback = setQuery(loginResultPath, "result", error);
+        callback = setQuery(loginResultPath, "loginToken", loginToken);
+        callCustomSchemeUri(callback);
+        window.close();
       }
+    }
+    
+    function getQueryValue(query, key) {
+      var vars = query.split('&');
+      for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == key) {
+              return decodeURIComponent(pair[1]);
+          }
+      }
+      return null;
     }
   </script>
 </head>
