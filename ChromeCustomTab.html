@@ -41,6 +41,12 @@
 //         document.body.appendChild(frame);
     }
    
+    function checkResult() {
+      var result = params.get("result");
+      if (result) {
+        alert(result);
+      }
+    }
   </script>
 </head>
 <body onload="checkResult()">
