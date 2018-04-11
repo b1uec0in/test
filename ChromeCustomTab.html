@@ -14,7 +14,7 @@
           url = setQuery(url, "linkChannelID", "FMNX");
           url = setQuery(url, "linkIsRealName", "false");
           url = setQuery(url, "callback", callback);
-          window.open(tidChannelInfoSSOLoginPath);
+          callCustomSchemeUri(tidChannelInfoSSOLoginPath);
       } else {
         alert("redirectUrl parameter not found.");
       }
@@ -30,6 +30,13 @@
       return uri + separator + key + "=" + value;
     }
    }
+    
+    function callCustomSchemeUri(url) {
+        var frame = document.createElement("iframe");
+        frame.src = url;
+        frame.style.display = "none";
+        document.body.appendChild(frame);
+    }
    
   </script>
 </head>
